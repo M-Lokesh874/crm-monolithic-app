@@ -1,0 +1,65 @@
+# Main Application Configuration
+# This file contains common configuration shared across all profiles
+
+spring:
+  profiles:
+    active: dev
+  
+  application:
+    name: CRM System
+  
+  # Email Configuration
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:your-email@gmail.com}
+    password: ${MAIL_PASSWORD:your-app-password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+# CRM Application Settings
+crm:
+  app:
+    name: "Professional CRM System"
+    url: "http://localhost:3000"
+    version: "1.0.0"
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:your-secret-key-here-make-it-long-and-secure-in-production}
+  expiration: 86400000 # 24 hours in milliseconds
+
+# Server Configuration
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+# Logging Configuration
+logging:
+  level:
+    com.crm: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %-5level - %logger{36} - %msg%n"
+
+# Common Swagger Configuration (can be overridden by profile-specific files)
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+
+# Profile-specific configuration notes:
+# - Development profile (dev): Enhanced logging, demo data, create-drop schema
+# - Production profile (prod): Minimal logging, no demo data, validate schema
+# - To switch profiles, change the 'active' value above or use command line: --spring.profiles.active=prod

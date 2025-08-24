@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+Backend Rules To Follow:
+1.Coding standards.
+2.Java doc for all controllers, services, repositories, entities, config and all other classes.
+3.It should follow interface service and implementation pattern for all.
+4.Global,custom and security, custom security exceptional handling.
+5.Class, method and packages level comments.
+6.Yml configuration instead of properties files.
+7.Profiles configuration for dev and prod environment.
+
+Front End To Follow:
+1.Follow all codind standards similar to what backend is following.
